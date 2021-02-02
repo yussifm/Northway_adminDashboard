@@ -1,0 +1,13 @@
+.left-toolbar{
+  display: flex;
+  flex-direction:  row;
+
+
+
+
+}
+
+.left-toolbar button, h2{
+     margin-left: 5px;
+     align-self:center;
+   }
