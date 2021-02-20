@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar fxLayout>
   <div class="left-toolbar">
    <button mat-mini-fab color="warn" >
           <mat-icon>menu</mat-icon>
@@ -8,15 +8,26 @@
 </div>
 
   <div class="search-bar">
-     <button mat-mini-fab >
+     <button mat-button color="warn">
           <mat-icon>search</mat-icon>
         </button>
   </div>
 
   <div class="right-toobar">
 
-  setting
-  userlogo
+   <button mat-button color="warn" [matMenuTriggerFor]="menu">
+     <mat-icon>settings</mat-icon>
+   </button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<img src="https://material.angular.io/assets/img/examples/shiba2.jpg" mat-card-avatar  [matMenuTriggerFor]="imgMenu" >
+<mat-menu #imgMenu="matMenu">
+  <button mat-menu-item>Logout</button>
+  <button mat-menu-item>Profile</button>
+</mat-menu>
   </div>
 
 

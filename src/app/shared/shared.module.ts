@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FooterComponent } from "./footer/footer.component";
@@ -13,19 +14,26 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
 	declarations: [HeaderComponent, FooterComponent, SidenavComponent],
 
-	imports: [
+  imports: [
+    MatSidenavModule,
 		FlexLayoutModule,
+		MatMenuModule,
 		CommonModule,
-		MatCardModule,
+    MatCardModule,
+    MatDividerModule,
 		MatIconModule,
 		MatToolbarModule,
 		MatButtonModule,
 		MatFormFieldModule,
-		MatInputModule,
+    MatInputModule,
+    RouterModule
 	],
 	exports: [
 		HeaderComponent,
@@ -33,12 +41,15 @@ import { MatInputModule } from "@angular/material/input";
 		SidenavComponent,
 		MatCardModule,
 		MatIconModule,
-		MatToolbarModule,
+    MatToolbarModule,
+    MatSidenavModule,
 		MatButtonModule,
-		MatFormFieldModule,
+    MatFormFieldModule,
+    MatDividerModule,
 		MatInputModule,
 		MatToolbarModule,
 		FlexLayoutModule,
+		MatMenuModule,
 	],
 })
 export class SharedModule {}
