@@ -1,1 +1,58 @@
-<p>login works!</p>
+<div class="content">
+	<h1>Admin Login</h1>
+	<form class="loginForm" [formGroup]="loginForm">
+		<mat-form-field class="full-width">
+			<mat-label>Email</mat-label>
+			<input
+				type="email"
+				matInput
+				formControlName="email"
+				placeholder="Email: Username@example.com"
+			/>
+
+			<mat-error
+				*ngIf="
+					loginForm.controls.email.hasError('email') &&
+					!loginForm.controls.email.hasError('required')
+				"
+			>
+				Please enter a valid email address
+			</mat-error>
+			<mat-error *ngIf="loginForm.controls.email.hasError('required')">
+				Email is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="full-width">
+			<mat-label>Password</mat-label>
+			<input
+				type="password"
+				matInput
+				formControlName="password"
+				placeholder="password"
+			/>
+			<mat-hint>Provide details to login!</mat-hint>
+			<mat-error
+				*ngIf="
+					loginForm.controls.password.hasError('min') &&
+					!loginForm.controls.password.hasError('required')
+				"
+			>
+				Please enter a correct password
+			</mat-error>
+			<mat-error *ngIf="loginForm.controls.password.hasError('required')">
+				Password is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+
+    <button type="submit" mat-stroked-button class="btn">Login</button>
+
+	</form>
+  <p>Or</p>
+
+  <button  mat-stroked-button class="btn">
+    <a [routerLink]="[ '/Signpage']">
+    SignUp </a></button>
+</div>
+
+<router-outlet></router-outlet>

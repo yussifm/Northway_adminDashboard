@@ -1,12 +1,21 @@
-import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { SignUpComponent } from "./pages/sign-up/sign-up.component";
+import { LoginComponent } from "./pages/login/login.component";
 import { NgModule } from "@angular/core";
 
 import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
 	{
-		path: "dashboard",
-		component: DashboardComponent,
+		path: "",
+		component: LoginComponent,
+	},
+	{
+		path: "login",
+		component: LoginComponent,
+	},
+	{
+		path: "Signpage",
+		component: SignUpComponent,
 	},
 ];
 
