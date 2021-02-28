@@ -16,36 +16,39 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSidenavModule} from '@angular/material/sidenav';
-import {MatDividerModule } from '@angular/material/divider';
+import { MatDividerModule } from "@angular/material/divider";
+import { MatListModule } from "@angular/material/list";
 
 @NgModule({
 	declarations: [HeaderComponent, FooterComponent, SidenavComponent],
 
-  imports: [
-    MatSidenavModule,
+	imports: [
+		MatListModule,
+		MatSidenavModule,
 		FlexLayoutModule,
 		MatMenuModule,
 		CommonModule,
-    MatCardModule,
-    MatDividerModule,
+		MatCardModule,
+		MatDividerModule,
 		MatIconModule,
 		MatToolbarModule,
 		MatButtonModule,
 		MatFormFieldModule,
-    MatInputModule,
-    RouterModule
+		MatInputModule,
+		RouterModule,
 	],
-	exports: [
+  exports: [
+    MatListModule,
 		HeaderComponent,
 		FooterComponent,
 		SidenavComponent,
 		MatCardModule,
 		MatIconModule,
-    MatToolbarModule,
-    MatSidenavModule,
+		MatToolbarModule,
+		MatSidenavModule,
 		MatButtonModule,
-    MatFormFieldModule,
-    MatDividerModule,
+		MatFormFieldModule,
+		MatDividerModule,
 		MatInputModule,
 		MatToolbarModule,
 		FlexLayoutModule,

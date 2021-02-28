@@ -16,6 +16,10 @@ export class SignUpComponent implements OnInit {
 		this.router.navigate(["login"]);
 	}
 
+	gotoMain() {
+		this.router.navigate(["main"]);
+	}
+
 	ngOnInit(): void {
 		this.signUpForm = this.fb.group({
 			name: ["", [Validators.required]],
@@ -23,9 +27,7 @@ export class SignUpComponent implements OnInit {
 				"",
 				[
 					Validators.required,
-					Validators.pattern(
-						"^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",
-					),
+					Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
 				],
 			],
 			password: ["", [Validators.required, Validators.minLength(8)]],
