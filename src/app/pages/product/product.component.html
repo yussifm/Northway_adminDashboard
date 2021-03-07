@@ -1,1 +1,42 @@
-<p>product works!</p>
+<header>
+<h1>Products Page</h1>
+
+<div class="head">
+
+  <button mat-raised-button color="warn"  (click) ="proView = true"> View Products</button>
+<button mat-raised-button color="warn" class="hd-btn"  (click) ="proView = !proView">Add Products</button>
+</div>
+
+
+</header>
+<mat-divider></mat-divider>
+<Main>
+
+
+  <ng-container *ngIf="proView; else elseTemplate">
+
+    <div class="productView">
+       <ul>
+      <li>Products </li>
+      <li>Products </li>
+      <li>Products </li>
+      <li>Products </li>
+      <li>Products </li>
+    </ul>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate class="Form">
+
+    <form  method="post">
+      <input type="text" name="" id="">
+    </form>
+  </ng-template>
+
+
+
+
+
+
+
+
+</Main>
