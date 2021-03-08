@@ -21,7 +21,7 @@
 
 <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" mat-card-avatar  [matMenuTriggerFor]="imgMenu" >
 <mat-menu #imgMenu="matMenu">
-  <button mat-menu-item>Logout</button>
+  <button mat-menu-item (click)="gotologin()">Logout</button>
   <button mat-menu-item>Profile</button>
 </mat-menu>
   </div>
