@@ -10,11 +10,6 @@ export class ProductComponent implements OnInit {
 	productForm: FormGroup;
 	proView: boolean = true;
 
-  // viewchnge() {
-  //   this.proView = false;
-  // }
-
-
 	constructor(private fb: FormBuilder) {}
 
 	ngOnInit(): void {
@@ -23,7 +18,7 @@ export class ProductComponent implements OnInit {
 			Category: ["", [Validators.required]],
 			Price: [[Validators.required]],
 			Description: ["", [Validators.required]],
-			image: ["", [Validators.required]],
+			Image: ["", [Validators.required]],
 		});
 	}
 }

@@ -1,42 +1,119 @@
 <header>
-<h1>Products Page</h1>
+	<h1>Products Page</h1>
 
-<div class="head">
-
-  <button mat-raised-button color="warn"  (click) ="proView = true"> View Products</button>
-<button mat-raised-button color="warn" class="hd-btn"  (click) ="proView = !proView">Add Products</button>
-</div>
-
-
+	<div class="head">
+		<button mat-raised-button color="warn" (click)="proView = true">
+			View Products</button
+		>
+		<button
+			mat-raised-button
+			color="warn"
+			class="hd-btn"
+			(click)="proView = !proView"
+			>Add Products</button
+		>
+	</div>
 </header>
 <mat-divider></mat-divider>
 <Main>
+	<ng-container *ngIf="proView; else elseTemplate">
+		<div class="productView">
+			<ul>
+				<li>Products </li>
+				<li>Products </li>
+				<li>Products </li>
+				<li>Products </li>
+				<li>Products </li>
+			</ul>
+		</div>
+	</ng-container>
+	<ng-template #elseTemplate>
+		<form class="ProductForm" [formGroup]="productForm">
+			<mat-form-field class="full-width">
+				<mat-label>ProductName</mat-label>
+				<input
+					type="text"
+					matInput
+					formControlName="Name"
+					placeholder="Eg: Iphone"
+				/>
+
+				<mat-error
+					*ngIf="
+						productForm.controls.Name.hasError('Name') &&
+						!productForm.controls.Name.hasError('required')
+					"
+				>
+					Please enter a valid Name
+				</mat-error>
+				<mat-error *ngIf="productForm.controls.Name.hasError('required')">
+					Name is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+
+			<mat-form-field class="full-width">
+				<mat-label>Category</mat-label>
+				<input
+					type="text"
+					matInput
+					formControlName="Category"
+					placeholder="Category"
+				/>
+				<mat-error *ngIf="!productForm.controls.Category.hasError('required')">
+					Please enter a Category
+				</mat-error>
+				<mat-error *ngIf="productForm.controls.Category.hasError('required')">
+					Category is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+
+			<mat-form-field class="full-width">
+				<mat-label>Price</mat-label>
+				<input
+					type="number"
+					matInput
+					formControlName="Price"
+					placeholder="1000"
+				/>
+				<mat-error *ngIf="!productForm.controls.Price.hasError('required')">
+					Please enter Price
+				</mat-error>
+				<mat-error *ngIf="productForm.controls.Price.hasError('required')">
+					Price is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
+
+			<mat-form-field class="full-width">
+				<mat-label>Description</mat-label>
+				<input
+					type="text"
+					matInput
+					formControlName="Description"
+					placeholder="Eg: iphone 12 128gb"
+				/>
+				<mat-error
+					*ngIf="!productForm.controls.Description.hasError('required')"
+				>
+					Please enter a Category
+				</mat-error>
+				<mat-error
+					*ngIf="productForm.controls.Description.hasError('required')"
+				>
+					Description is <strong>required</strong>
+				</mat-error>
+			</mat-form-field>
 
 
-  <ng-container *ngIf="proView; else elseTemplate">
+      <label for="Product-image">Select Product picture:</label>
+			<input
+				type="file"
+				id="Product-image"
+				name="Product-image"
+        formControlName="Image"
+				accept="image/png, image/jpeg"
+			/>
 
-    <div class="productView">
-       <ul>
-      <li>Products </li>
-      <li>Products </li>
-      <li>Products </li>
-      <li>Products </li>
-      <li>Products </li>
-    </ul>
-    </div>
-  </ng-container>
-  <ng-template #elseTemplate class="Form">
-
-    <form  method="post">
-      <input type="text" name="" id="">
-    </form>
-  </ng-template>
-
-
-
-
-
-
-
-
+			<button type="submit"  mat-raised-button color="warn" class="btn" >Upload</button>
+		</form>
+	</ng-template>
 </Main>
