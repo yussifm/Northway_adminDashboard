@@ -9,7 +9,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { PartnersComponent } from './partners/partners.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ReportsComponent } from './reports/reports.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 @NgModule({
@@ -22,7 +22,7 @@ import { RouterModule } from "@angular/router";
 		PartnersComponent,
 		OrdersComponent,
 		ReportsComponent,
-		SignUpComponent,
+
 	],
 	imports: [CommonModule, SharedModule, ReactiveFormsModule, RouterModule],
 	exports: [
@@ -36,7 +36,7 @@ import { RouterModule } from "@angular/router";
 		PartnersComponent,
 		OrdersComponent,
 		ReportsComponent,
-		SignUpComponent,
+
 	],
 })
 export class PagesModule {}

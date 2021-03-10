@@ -1,7 +1,6 @@
 import { CustomersComponent } from "./pages/customers/customers.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { LayoutComponent } from "./layout/layout.component";
-import { SignUpComponent } from "./pages/sign-up/sign-up.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { NgModule } from "@angular/core";
 
@@ -21,10 +20,7 @@ const routes: Routes = [
 		path: "login",
 		component: LoginComponent,
 	},
-	{
-		path: "Signpage",
-		component: SignUpComponent,
-	},
+
 
 	{
 		path: "main",
