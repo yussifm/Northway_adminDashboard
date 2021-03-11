@@ -12,6 +12,7 @@ import { ReportsComponent } from './reports/reports.component';
 
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
 	declarations: [
 		DashboardComponent,
@@ -22,9 +23,14 @@ import { RouterModule } from "@angular/router";
 		PartnersComponent,
 		OrdersComponent,
 		ReportsComponent,
-
 	],
-	imports: [CommonModule, SharedModule, ReactiveFormsModule, RouterModule],
+	imports: [
+		CommonModule,
+		SharedModule,
+		ReactiveFormsModule,
+		RouterModule,
+		HttpClientModule,
+	],
 	exports: [
 		SharedModule,
 		DashboardComponent,
@@ -36,7 +42,6 @@ import { RouterModule } from "@angular/router";
 		PartnersComponent,
 		OrdersComponent,
 		ReportsComponent,
-
 	],
 })
 export class PagesModule {}
