@@ -4,19 +4,17 @@ import { Icustom } from './customer.interface';
 import { CustomerService } from './customer.service';
 
 @Component({
-  selector: 'app-customers',
-  templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.css']
+	selector: "app-customers",
+	templateUrl: "./customers.component.html",
+	styleUrls: ["./customers.component.css"],
 })
 export class CustomersComponent implements OnInit {
+	constructor(private customData: CustomerService) {}
 
-  constructor(private customData: CustomerService) { }
-  user: Icustom;
-
-
-  ngOnInit() {
-
-
-  }
-
+	ngOnInit(): void {
+		this.customData.getAllCustomer().subscribe((data: any) => {
+			this.user = data;
+		});
+	}
+	user: any;
 }

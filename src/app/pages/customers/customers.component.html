@@ -1,12 +1,13 @@
 <div class="main">
+<h1>Customers</h1>
+<hr>
+  <ul >
+    <li *ngFor="let person of user; index as i">
+   <p>{{person.first_name}} {{person.second_name}}</p>
+   {{person.email}}
+   {{person.phone}}
+   <p>{{person.role}}</p>
 
-  <ul>
-    <li>
-      <p>{{user}}</p>
-      <!-- <img src={{img}} alt="">
-      <p>{{name}}</p>
-      <p>{{phone}}</p>
-      <p>{{role}}</p> -->
     </li>
   </ul>
 </div>

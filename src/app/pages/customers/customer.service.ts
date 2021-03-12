@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
+import { Icustom } from "./customer.interface";
 
 @Injectable({
 	providedIn: "root",
@@ -25,7 +26,9 @@ export class CustomerService {
 		return throwError("Something bad happened; please try again later.");
 	}
 
-	public async getAllCustomer() {
-		return this.http.get(this.url).pipe(retry(3), catchError(this.handleError));
+	public getAllCustomer(): Observable<Icustom> {
+		return this.http
+			.get<Icustom>(this.url)
+			.pipe(retry(3), catchError(this.handleError));
 	}
 }

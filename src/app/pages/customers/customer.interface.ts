@@ -1,6 +1,6 @@
 export interface Icustom {
-	name: string;
-	phone: string;
-	img: string;
-	role: string;
+	first_name;
+	second_name;
+	email;
+	phone;
 }
