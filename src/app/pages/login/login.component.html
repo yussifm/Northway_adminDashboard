@@ -1,6 +1,6 @@
 <div class="content">
 	<h1>Admin Login</h1>
-	<form class="loginForm" [formGroup]="loginForm">
+	<form class="loginForm" [formGroup]="loginForm" (ngSubmit)="LogintoAdmin()">
 		<mat-form-field class="full-width">
 			<mat-label>Email</mat-label>
 			<input
@@ -45,7 +45,7 @@
 			</mat-error>
 		</mat-form-field>
 
-    <button type="submit" mat-stroked-button class="btn" (click)="gotoMain()">Login</button>
+    <button type="submit" mat-stroked-button class="btn" (ngSubmit)="LogintoAdmin()">Login</button>
 
 	</form>
 

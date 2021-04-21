@@ -19,16 +19,26 @@
 	<ng-container *ngIf="proView; else elseTemplate">
 		<div class="productView">
 			<ul>
-				<li>Products </li>
-				<li>Products </li>
-				<li>Products </li>
-				<li>Products </li>
-				<li>Products </li>
+				<li *ngFor="let item of product; index as i">
+					<img
+						src="{{ item.Prouduct_image.data }}"
+						alt=""
+						width="50px"
+						height="50px"
+					/>
+					<h3>{{ item.product_name }}</h3>
+					<p>{{ item.product_description }}</p>
+					<h5>{{ item.product_price }}</h5>
+				</li>
 			</ul>
 		</div>
 	</ng-container>
 	<ng-template #elseTemplate>
-		<form class="ProductForm" [formGroup]="productForm">
+		<form
+			class="ProductForm"
+			[formGroup]="productForm"
+			(ngSubmit)="addProduct()"
+		>
 			<mat-form-field class="full-width">
 				<mat-label>ProductName</mat-label>
 				<input
@@ -48,22 +58,6 @@
 				</mat-error>
 				<mat-error *ngIf="productForm.controls.Name.hasError('required')">
 					Name is <strong>required</strong>
-				</mat-error>
-			</mat-form-field>
-
-			<mat-form-field class="full-width">
-				<mat-label>Category</mat-label>
-				<input
-					type="text"
-					matInput
-					formControlName="Category"
-					placeholder="Category"
-				/>
-				<mat-error *ngIf="!productForm.controls.Category.hasError('required')">
-					Please enter a Category
-				</mat-error>
-				<mat-error *ngIf="productForm.controls.Category.hasError('required')">
-					Category is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
 
@@ -94,7 +88,7 @@
 				<mat-error
 					*ngIf="!productForm.controls.Description.hasError('required')"
 				>
-					Please enter a Category
+					Please a description
 				</mat-error>
 				<mat-error
 					*ngIf="productForm.controls.Description.hasError('required')"
@@ -103,17 +97,32 @@
 				</mat-error>
 			</mat-form-field>
 
+			<mat-form-field appearance="fill">
+				<mat-label>Product Category</mat-label>
+				<mat-select>
+					<mat-option *ngFor="let cate of category" [value]="cate.value">
+						{{ cate.viewValue }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
 
-      <label for="Product-image">Select Product picture:</label>
+			<label for="Product-image">Select Product picture:</label>
 			<input
 				type="file"
 				id="Product-image"
 				name="Product-image"
-        formControlName="Image"
+				formControlName="Image"
 				accept="image/png, image/jpeg"
 			/>
 
-			<button type="submit"  mat-raised-button color="warn" class="btn" >Upload</button>
+			<button
+				type="submit"
+				mat-raised-button
+				color="warn"
+				class="btn"
+				(ngSubmit)="addProduct()"
+				>Add Product</button
+			>
 		</form>
 	</ng-template>
 </Main>

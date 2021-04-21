@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , ReactiveFormsModule} from "@angular/forms";
 
 import { Router } from "@angular/router";
+import { map } from "rxjs/operators";
+import { AuthService } from "src/app/Auth/auth.service";
+
+export interface login_form {
+	email: string;
+	password: string;
+}
 
 @Component({
 	selector: "app-login",
@@ -10,10 +17,26 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 	loginForm: FormGroup;
-	gotoMain() {
-		this.router.navigate(["main"]);
+
+	LogintoAdmin() {
+		if (this.loginForm.invalid) {
+			return;
+		}
+
+		this.auth
+			.login(this.loginForm.value)
+			.pipe(
+				map((token) => {
+					this.router.navigate(["main"]);
+				}),
+			)
+			.subscribe();
 	}
-	constructor(private router: Router, private fb: FormBuilder) {}
+	constructor(
+		private router: Router,
+		private fb: FormBuilder,
+		private auth: AuthService,
+	) {}
 
 	ngOnInit(): void {
 		this.loginForm = this.fb.group({

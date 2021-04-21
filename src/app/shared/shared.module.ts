@@ -18,11 +18,13 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
 	declarations: [HeaderComponent, FooterComponent, SidenavComponent],
 
-	imports: [
+  imports: [
+    MatSelectModule,
 		MatListModule,
 		MatSidenavModule,
 		FlexLayoutModule,
@@ -52,7 +54,8 @@ import { MatListModule } from "@angular/material/list";
 		MatInputModule,
 		MatToolbarModule,
 		FlexLayoutModule,
-		MatMenuModule,
+    MatMenuModule,
+    MatSelectModule
 	],
 })
 export class SharedModule {}
