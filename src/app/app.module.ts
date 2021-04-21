@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { JwtHelperService, JWT_OPTIONS } from "@auth0/angular-jwt";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from "./app-routing.module";
@@ -16,7 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		AppRoutingModule,
 		BrowserAnimationsModule,
 	],
-	providers: [],
+	providers: [
+		JwtHelperService,
+		{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

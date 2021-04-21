@@ -10,6 +10,7 @@ import { ErrandsComponent } from "./pages/errands/errands.component";
 import { OrdersComponent } from "./pages/orders/orders.component";
 import { PartnersComponent } from "./pages/partners/partners.component";
 import { ReportsComponent } from "./pages/reports/reports.component";
+import { AuthGuard } from "./Gaurd/auth.guard";
 
 const routes: Routes = [
 	{
@@ -22,8 +23,9 @@ const routes: Routes = [
 	},
 
 	{
-		path: "login/main",
-		component: LayoutComponent,
+		path: "main",
+    component: LayoutComponent,
+    canActivate:[AuthGuard],
 		children: [
 			{
 				path: "",

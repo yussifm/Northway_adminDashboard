@@ -23,8 +23,8 @@ import { MatSelectModule } from "@angular/material/select";
 @NgModule({
 	declarations: [HeaderComponent, FooterComponent, SidenavComponent],
 
-  imports: [
-    MatSelectModule,
+	imports: [
+		MatSelectModule,
 		MatListModule,
 		MatSidenavModule,
 		FlexLayoutModule,
@@ -39,8 +39,8 @@ import { MatSelectModule } from "@angular/material/select";
 		MatInputModule,
 		RouterModule,
 	],
-  exports: [
-    MatListModule,
+	exports: [
+		MatListModule,
 		HeaderComponent,
 		FooterComponent,
 		SidenavComponent,
@@ -54,8 +54,9 @@ import { MatSelectModule } from "@angular/material/select";
 		MatInputModule,
 		MatToolbarModule,
 		FlexLayoutModule,
-    MatMenuModule,
-    MatSelectModule
+		MatMenuModule,
+		MatSelectModule,
 	],
+
 })
 export class SharedModule {}
