@@ -44,19 +44,19 @@
 				<input
 					type="text"
 					matInput
-					formControlName="Name"
+					formControlName="product_name"
 					placeholder="Eg: Iphone"
 				/>
 
 				<mat-error
 					*ngIf="
-						productForm.controls.Name.hasError('Name') &&
-						!productForm.controls.Name.hasError('required')
+						productForm.controls.product_name.hasError('Name') &&
+						!productForm.controls.product_name.hasError('required')
 					"
 				>
 					Please enter a valid Name
 				</mat-error>
-				<mat-error *ngIf="productForm.controls.Name.hasError('required')">
+				<mat-error *ngIf="productForm.controls.product_name.hasError('required')">
 					Name is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
@@ -66,13 +66,13 @@
 				<input
 					type="number"
 					matInput
-					formControlName="Price"
+					formControlName="product_price"
 					placeholder="1000"
 				/>
-				<mat-error *ngIf="!productForm.controls.Price.hasError('required')">
+				<mat-error *ngIf="!productForm.controls.product_price.hasError('required')">
 					Please enter Price
 				</mat-error>
-				<mat-error *ngIf="productForm.controls.Price.hasError('required')">
+				<mat-error *ngIf="productForm.controls.product_price.hasError('required')">
 					Price is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
@@ -82,16 +82,16 @@
 				<input
 					type="text"
 					matInput
-					formControlName="Description"
+					formControlName="product_description"
 					placeholder="Eg: iphone 12 128gb"
 				/>
 				<mat-error
-					*ngIf="!productForm.controls.Description.hasError('required')"
+					*ngIf="!productForm.controls.product_description.hasError('required')"
 				>
 					Please a description
 				</mat-error>
 				<mat-error
-					*ngIf="productForm.controls.Description.hasError('required')"
+					*ngIf="productForm.controls.product_description.hasError('required')"
 				>
 					Description is <strong>required</strong>
 				</mat-error>
@@ -111,7 +111,8 @@
 				type="file"
 				id="Product-image"
 				name="Product-image"
-				formControlName="Image"
+				formControlName="Product_image"
+         (change)="uploadFile($event)"
 				accept="image/png, image/jpeg"
 			/>
 

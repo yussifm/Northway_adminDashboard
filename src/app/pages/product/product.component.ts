@@ -4,11 +4,10 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { map } from "rxjs/operators";
 
-
-    interface ICategory {
-			value: string;
-			viewValue: string;
-    }
+interface ICategory {
+	value: string;
+	viewValue: string;
+}
 
 @Component({
 	selector: "app-product",
@@ -40,32 +39,37 @@ export class ProductComponent implements OnInit {
 		{ value: "tacos-10", viewValue: "Tacos" },
 	];
 
+	uploadFile(event) {
+		const file = (event.target as HTMLInputElement).files[0];
+		this.productForm.patchValue({
+			Product_image: file,
+		});
+		this.productForm.get("Product_image").updateOn;
+	}
+
 	addProduct() {
 		if (this.productForm.invalid) {
 			return;
 		}
-    this.productData.AddProductSer(this.productForm.value).pipe(map((token) => {
-      this.router.navigate(["products"]);
-
-    })).subscribe();
+		console.log(this.productForm.value);
+		this.productData.AddProductSer(this.productForm.value).subscribe(
+			(response) => console.log(response),
+			(error) => console.log(error),
+		);
 	}
+
 	ngOnInit(): void {
 		this.productData.GetAllProductSer().subscribe((data: any) => {
 			this.product = data;
 		});
 
 		this.productForm = this.fb.group({
-			Name: ["", [Validators.required]],
-			Description: ["", [Validators.required]],
-			Price: [[Validators.required]],
-			Category: ["", [Validators.required]],
+			product_name: ["", [Validators.required]],
+			product_description: ["", [Validators.required]],
+			product_price: [[Validators.required]],
+			categories: ["", [Validators.required]],
 
-			Image: ["", [Validators.required]],
+			Product_image: ["", [Validators.required]],
 		});
 	}
 }
-
-
-
-
-

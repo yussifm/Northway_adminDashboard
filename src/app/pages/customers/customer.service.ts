@@ -1,7 +1,9 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
+import { JWT_token } from "src/app/Auth/auth.service";
 import { Icustom } from "./customer.interface";
 
 @Injectable({
@@ -26,9 +28,15 @@ export class CustomerService {
 		return throwError("Something bad happened; please try again later.");
 	}
 
-	public getAllCustomer(): Observable<Icustom> {
+  public getAllCustomer(): Observable<Icustom> {
+    	const token = localStorage.getItem(JWT_token);
 		return this.http
-			.get<Icustom>(this.url)
+      .get<Icustom>(this.url, {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + token,
+
+        })
+      })
 			.pipe(retry(3), catchError(this.handleError));
 	}
 }
