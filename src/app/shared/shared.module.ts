@@ -2,6 +2,8 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FooterComponent } from "./footer/footer.component";
+import { MatTableModule } from "@angular/material/table";
+
 
 import { HeaderComponent } from "./header/header.component";
 import { SidenavComponent } from "./sidenav/sidenav.component";
@@ -31,7 +33,8 @@ import { MatSelectModule } from "@angular/material/select";
 		MatMenuModule,
 		CommonModule,
 		MatCardModule,
-		MatDividerModule,
+    MatDividerModule,
+    MatTableModule,
 		MatIconModule,
 		MatToolbarModule,
 		MatButtonModule,
@@ -45,7 +48,8 @@ import { MatSelectModule } from "@angular/material/select";
 		FooterComponent,
 		SidenavComponent,
 		MatCardModule,
-		MatIconModule,
+    MatIconModule,
+    MatTableModule,
 		MatToolbarModule,
 		MatSidenavModule,
 		MatButtonModule,

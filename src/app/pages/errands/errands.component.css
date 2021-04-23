@@ -1,0 +1,52 @@
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+}
+
+.hd-btn{
+  margin: 10px;
+}
+
+.ErransForm{
+  margin: 50px;
+  padding: 5px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  margin: 30px;
+  max-width: 100%;
+  max-height: 80%;
+}
+
+.full-width {
+  width: 50%;
+  margin: 10px;
+  padding: 5px;
+  scroll-behavior: auto;
+}
+
+
+.btn{
+  margin-top: 20px;
+  color: white;
+}
+
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+

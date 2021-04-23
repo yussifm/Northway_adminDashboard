@@ -18,7 +18,7 @@
 <Main>
 	<ng-container *ngIf="proView; else elseTemplate">
 		<div class="productView">
-			<ul>
+			<!-- <ul>
 				<li *ngFor="let item of product; index as i">
 					<img
 						src="{{ item.Prouduct_image.data }}"
@@ -30,7 +30,52 @@
 					<p>{{ item.product_description }}</p>
 					<h5>{{ item.product_price }}</h5>
 				</li>
-			</ul>
+			</ul> -->
+			<mat-form-field>
+				<mat-label>Filter</mat-label>
+				<input
+					matInput
+					(keyup)="applyFilter($event)"
+					placeholder="Ex. ium"
+					#input
+				/>
+			</mat-form-field>
+
+			<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+				<!-- Position Column -->
+				<ng-container matColumnDef="position">
+					<th mat-header-cell *matHeaderCellDef> No. </th>
+					<td mat-cell *matCellDef="let element"> {{ element.position }} </td>
+				</ng-container>
+
+				<!-- Name Column --> 
+				<ng-container matColumnDef="name">
+					<th mat-header-cell *matHeaderCellDef> Name </th>
+					<td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+				</ng-container>
+
+				<!-- Weight Column -->
+				<ng-container matColumnDef="weight">
+					<th mat-header-cell *matHeaderCellDef> Weight </th>
+					<td mat-cell *matCellDef="let element"> {{ element.weight }} </td>
+				</ng-container>
+
+				<!-- Symbol Column -->
+				<ng-container matColumnDef="symbol">
+					<th mat-header-cell *matHeaderCellDef> Symbol </th>
+					<td mat-cell *matCellDef="let element"> {{ element.symbol }} </td>
+				</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+				<!-- Row shown when there is no matching data. -->
+				<tr class="mat-row" *matNoDataRow>
+					<td class="mat-cell" colspan="4"
+						>No data matching the filter "{{ input.value }}"</td
+					>
+				</tr>
+			</table>
 		</div>
 	</ng-container>
 	<ng-template #elseTemplate>
@@ -56,7 +101,9 @@
 				>
 					Please enter a valid Name
 				</mat-error>
-				<mat-error *ngIf="productForm.controls.product_name.hasError('required')">
+				<mat-error
+					*ngIf="productForm.controls.product_name.hasError('required')"
+				>
 					Name is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
@@ -69,10 +116,14 @@
 					formControlName="product_price"
 					placeholder="1000"
 				/>
-				<mat-error *ngIf="!productForm.controls.product_price.hasError('required')">
+				<mat-error
+					*ngIf="!productForm.controls.product_price.hasError('required')"
+				>
 					Please enter Price
 				</mat-error>
-				<mat-error *ngIf="productForm.controls.product_price.hasError('required')">
+				<mat-error
+					*ngIf="productForm.controls.product_price.hasError('required')"
+				>
 					Price is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
@@ -112,7 +163,7 @@
 				id="Product-image"
 				name="Product-image"
 				formControlName="Product_image"
-         (change)="uploadFile($event)"
+				(change)="uploadFile($event)"
 				accept="image/png, image/jpeg"
 			/>
 
