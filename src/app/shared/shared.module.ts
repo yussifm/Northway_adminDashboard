@@ -21,6 +21,7 @@ import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
 import { MatSelectModule } from "@angular/material/select";
+import { HighchartsChartModule } from "highcharts-angular";
 
 @NgModule({
 	declarations: [HeaderComponent, FooterComponent, SidenavComponent],
@@ -34,6 +35,7 @@ import { MatSelectModule } from "@angular/material/select";
 		CommonModule,
 		MatCardModule,
     MatDividerModule,
+     HighchartsChartModule,
     MatTableModule,
 		MatIconModule,
 		MatToolbarModule,
@@ -47,7 +49,8 @@ import { MatSelectModule } from "@angular/material/select";
 		HeaderComponent,
 		FooterComponent,
 		SidenavComponent,
-		MatCardModule,
+    MatCardModule,
+     HighchartsChartModule,
     MatIconModule,
     MatTableModule,
 		MatToolbarModule,

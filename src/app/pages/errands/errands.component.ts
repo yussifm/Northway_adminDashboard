@@ -37,11 +37,16 @@ export class ErrandsComponent implements OnInit {
 	//Table
 	displayedColumns: string[] = ["position", "name", "weight", "symbol"];
 	dataSource = new MatTableDataSource(Errands_DATA);
-  ngOnInit(): void {
-    this.ErrsForm = this.fb.group({
+
+	applyFilter(event: Event) {
+		const filterValue = (event.target as HTMLInputElement).value;
+		this.dataSource.filter = filterValue.trim().toLowerCase();
+	}
+	ngOnInit(): void {
+		this.ErrsForm = this.fb.group({
 			name: ["", [Validators.required]],
 			content: ["", [Validators.required]],
 			destination: ["", [Validators.required]],
 		});
-  }
+	}
 }
