@@ -8,24 +8,26 @@ import { MatTableDataSource } from "@angular/material/table";
 //Tables
 export interface Producttable {
 	name: string;
-	position: number;
-	weight: number;
-	symbol: string;
+	position: any;
+	description: string;
+	price: string;
 }
 
-const Product_DATA: Producttable[] = [
-	{ position: 1, name: "Hydrogen", weight: 1.0079, symbol: "H" },
-	{ position: 2, name: "Helium", weight: 4.0026, symbol: "He" },
-	{ position: 3, name: "Lithium", weight: 6.941, symbol: "Li" },
-	{ position: 4, name: "Beryllium", weight: 9.0122, symbol: "Be" },
-	{ position: 5, name: "Boron", weight: 10.811, symbol: "B" },
-	{ position: 6, name: "Carbon", weight: 12.0107, symbol: "C" },
-	{ position: 7, name: "Nitrogen", weight: 14.0067, symbol: "N" },
-	{ position: 8, name: "Oxygen", weight: 15.9994, symbol: "O" },
-	{ position: 9, name: "Fluorine", weight: 18.9984, symbol: "F" },
-	{ position: 10, name: "Neon", weight: 20.1797, symbol: "Ne" },
-];
+let Product_DATA: Producttable[];
 
+// const Product_DATA: Producttable[] = [
+// 	{ position: 1, name: "Hydrogen", description: 1.0079, price: "H" },
+// 	{ position: 2, name: "Helium", description: 4.0026, price: "He" },
+// 	{ position: 3, name: "Lithium", description: 6.941, price: "Li" },
+// 	{ position: 4, name: "Beryllium", description: 9.0122, price: "Be" },
+// 	{ position: 5, name: "Boron", description: 10.811, price: "B" },
+// 	{ position: 6, name: "Carbon", description: 12.0107, price: "C" },
+// 	{ position: 7, name: "Nitrogen", description: 14.0067, price: "N" },
+// 	{ position: 8, name: "Oxygen", description: 15.9994, price: "O" },
+// 	{ position: 9, name: "Fluorine", description: 18.9984, price: "F" },
+// 	{ position: 10, name: "Neon", description: 20.1797, price: "Ne" },
+// ];
+// //
 // Categories
 interface ICategory {
 	value: string;
@@ -49,7 +51,7 @@ export class ProductComponent implements OnInit {
 	) {}
 
 	//Table
-	displayedColumns: string[] = ["position", "name", "weight", "symbol"];
+	displayedColumns: string[] = ["position", "name", "description", "price"];
 	dataSource = new MatTableDataSource(Product_DATA);
 
 	applyFilter(event: Event) {
@@ -94,6 +96,15 @@ export class ProductComponent implements OnInit {
 		this.productData.GetAllProductSer().subscribe((data: any) => {
 			this.product = data;
 		});
+
+		Product_DATA = [
+			{
+				position: ``,
+				name: `${this.product.product_name}`,
+				description: `${this.product.product_description}`,
+				price: `${this.product.product_price}`,
+			},
+		];
 
 		this.productForm = this.fb.group({
 			product_name: ["", [Validators.required]],

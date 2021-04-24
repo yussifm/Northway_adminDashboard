@@ -35,7 +35,7 @@ import { HighchartsChartModule } from "highcharts-angular";
 		CommonModule,
 		MatCardModule,
     MatDividerModule,
-     HighchartsChartModule,
+    HighchartsChartModule,
     MatTableModule,
 		MatIconModule,
 		MatToolbarModule,

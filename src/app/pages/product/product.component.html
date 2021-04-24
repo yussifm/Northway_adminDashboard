@@ -18,19 +18,7 @@
 <Main>
 	<ng-container *ngIf="proView; else elseTemplate">
 		<div class="productView">
-			<!-- <ul>
-				<li *ngFor="let item of product; index as i">
-					<img
-						src="{{ item.Prouduct_image.data }}"
-						alt=""
-						width="50px"
-						height="50px"
-					/>
-					<h3>{{ item.product_name }}</h3>
-					<p>{{ item.product_description }}</p>
-					<h5>{{ item.product_price }}</h5>
-				</li>
-			</ul> -->
+
 			<mat-form-field>
 				<mat-label>Filter</mat-label>
 				<input
@@ -48,22 +36,22 @@
 					<td mat-cell *matCellDef="let element"> {{ element.position }} </td>
 				</ng-container>
 
-				<!-- Name Column --> 
+				<!-- Name Column -->
 				<ng-container matColumnDef="name">
 					<th mat-header-cell *matHeaderCellDef> Name </th>
 					<td mat-cell *matCellDef="let element"> {{ element.name }} </td>
 				</ng-container>
 
 				<!-- Weight Column -->
-				<ng-container matColumnDef="weight">
-					<th mat-header-cell *matHeaderCellDef> Weight </th>
-					<td mat-cell *matCellDef="let element"> {{ element.weight }} </td>
+				<ng-container matColumnDef="description">
+					<th mat-header-cell *matHeaderCellDef> Decription </th>
+					<td mat-cell *matCellDef="let element"> {{ element.description }} </td>
 				</ng-container>
 
 				<!-- Symbol Column -->
-				<ng-container matColumnDef="symbol">
-					<th mat-header-cell *matHeaderCellDef> Symbol </th>
-					<td mat-cell *matCellDef="let element"> {{ element.symbol }} </td>
+				<ng-container matColumnDef="price">
+					<th mat-header-cell *matHeaderCellDef> price </th>
+					<td mat-cell *matCellDef="let element"> {{ element.price }} </td>
 				</ng-container>
 
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
