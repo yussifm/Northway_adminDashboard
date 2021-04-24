@@ -1,19 +1,20 @@
+import { Iproduct } from "./product.interface";
 import { ProductService } from "./service/product.service";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { MatTableDataSource } from "@angular/material/table";
 
 //Tables
-export interface Producttable {
-	name: string;
-	position: any;
-	description: string;
-	price: string;
-}
+// export interface Producttable {
+// 	name: string;
+// 	position: any;
+// 	description: string;
+// 	price: string;
+// }
 
-let Product_DATA: Producttable[];
+// let Product_DATA: Producttable[];
 
 // const Product_DATA: Producttable[] = [
 // 	{ position: 1, name: "Hydrogen", description: 1.0079, price: "H" },
@@ -42,7 +43,7 @@ interface ICategory {
 export class ProductComponent implements OnInit {
 	productForm: FormGroup;
 	proView: boolean = true;
-	product: any;
+	product: Iproduct = null;
 
 	constructor(
 		private fb: FormBuilder,
@@ -52,7 +53,7 @@ export class ProductComponent implements OnInit {
 
 	//Table
 	displayedColumns: string[] = ["position", "name", "description", "price"];
-	dataSource = new MatTableDataSource(Product_DATA);
+	dataSource = new MatTableDataSource();
 
 	applyFilter(event: Event) {
 		const filterValue = (event.target as HTMLInputElement).value;
@@ -93,18 +94,8 @@ export class ProductComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.productData.GetAllProductSer().subscribe((data: any) => {
-			this.product = data;
-		});
+		this.initDtasource();
 
-		Product_DATA = [
-			{
-				position: ``,
-				name: `${this.product.product_name}`,
-				description: `${this.product.product_description}`,
-				price: `${this.product.product_price}`,
-			},
-		];
 
 		this.productForm = this.fb.group({
 			product_name: ["", [Validators.required]],
@@ -114,5 +105,17 @@ export class ProductComponent implements OnInit {
 
 			Product_image: ["", [Validators.required]],
 		});
+	}
+
+	initDtasource() {
+		this.productData
+			.GetAllProductSer()
+			.pipe(
+				tap((data) => console.log(data)),
+				map((data: any) => {
+					this.product = data;
+				}),
+			)
+			.subscribe();
 	}
 }
