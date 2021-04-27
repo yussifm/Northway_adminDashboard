@@ -11,6 +11,7 @@ import { OrdersComponent } from "./pages/orders/orders.component";
 import { PartnersComponent } from "./pages/partners/partners.component";
 import { ReportsComponent } from "./pages/reports/reports.component";
 import { AuthGuard } from "./Gaurd/auth.guard";
+import { ProfileComponent } from "./pages/profile/profile.component";
 
 const routes: Routes = [
 	{
@@ -24,8 +25,8 @@ const routes: Routes = [
 
 	{
 		path: "main",
-    component: LayoutComponent,
-    // canActivate:[AuthGuard],
+		component: LayoutComponent,
+		canActivate: [AuthGuard],
 		children: [
 			{
 				path: "",
@@ -58,6 +59,10 @@ const routes: Routes = [
 			{
 				path: "reports",
 				component: ReportsComponent,
+			},
+			{
+				path: "profile",
+				component: ProfileComponent,
 			},
 		],
 	},

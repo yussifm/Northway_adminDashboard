@@ -13,6 +13,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
+import { ProfileComponent } from "./profile/profile.component";
 @NgModule({
 	declarations: [
 		DashboardComponent,
@@ -23,6 +24,7 @@ import { HttpClientModule } from "@angular/common/http";
 		PartnersComponent,
 		OrdersComponent,
 		ReportsComponent,
+		ProfileComponent,
 	],
 	imports: [
 		CommonModule,
@@ -42,6 +44,7 @@ import { HttpClientModule } from "@angular/common/http";
 		PartnersComponent,
 		OrdersComponent,
 		ReportsComponent,
+		ProfileComponent,
 	],
 })
 export class PagesModule {}

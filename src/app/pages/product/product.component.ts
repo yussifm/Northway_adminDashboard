@@ -7,12 +7,13 @@ import { map, tap } from "rxjs/operators";
 import { MatTableDataSource } from "@angular/material/table";
 
 //Tables
-// export interface Producttable {
-// 	name: string;
-// 	position: any;
-// 	description: string;
-// 	price: string;
-// }
+export interface Producttable {
+	name: string;
+	position: any;
+	description: string;
+	price: string;
+	category: string;
+}
 
 // let Product_DATA: Producttable[];
 
@@ -43,7 +44,7 @@ interface ICategory {
 export class ProductComponent implements OnInit {
 	productForm: FormGroup;
 	proView: boolean = true;
-	product: Iproduct = null;
+	product: Iproduct[] =  null;
 
 	constructor(
 		private fb: FormBuilder,
@@ -52,8 +53,14 @@ export class ProductComponent implements OnInit {
 	) {}
 
 	//Table
-	displayedColumns: string[] = ["position", "name", "description", "price"];
-	dataSource = new MatTableDataSource();
+	displayedColumns: string[] = [
+		"position",
+		"name",
+		"description",
+		"price",
+		"category",
+	];
+	dataSource = new MatTableDataSource(this.product);
 
 	applyFilter(event: Event) {
 		const filterValue = (event.target as HTMLInputElement).value;
@@ -95,7 +102,6 @@ export class ProductComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.initDtasource();
-
 
 		this.productForm = this.fb.group({
 			product_name: ["", [Validators.required]],

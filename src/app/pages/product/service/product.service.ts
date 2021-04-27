@@ -11,7 +11,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ProductService {
 	constructor(private http: HttpClient) {}
-	private url = "https://api.northwayhub.com/product";
+	private url = "http://localhost:3000/product";
 
 	private handleError(error: HttpErrorResponse) {
 		if (error.error instanceof ErrorEvent) {
