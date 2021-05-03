@@ -13,6 +13,7 @@ export interface Producttable {
 	description: string;
 	price: string;
 	category: string;
+	image: string;
 }
 
 // let Product_DATA: Producttable[];
@@ -44,7 +45,7 @@ interface ICategory {
 export class ProductComponent implements OnInit {
 	productForm: FormGroup;
 	proView: boolean = true;
-	product: Iproduct[] =  null;
+	product: Iproduct[] = null;
 
 	constructor(
 		private fb: FormBuilder,
@@ -59,6 +60,7 @@ export class ProductComponent implements OnInit {
 		"description",
 		"price",
 		"category",
+		"image",
 	];
 	dataSource = new MatTableDataSource(this.product);
 
@@ -117,7 +119,6 @@ export class ProductComponent implements OnInit {
 		this.productData
 			.GetAllProductSer()
 			.pipe(
-				tap((data) => console.log(data)),
 				map((data: any) => {
 					this.product = data;
 				}),

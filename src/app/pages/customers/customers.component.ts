@@ -34,7 +34,7 @@ export class CustomersComponent implements OnInit {
 	constructor(private customData: CustomerService) {}
 	user: Icustom = null;
 	//Table
-	displayedColumns: string[] = ["position", "name", "phone", "email"];
+	displayedColumns: string[] = ["position", "name", "phone", "email", "image"];
 	dataSource = new MatTableDataSource();
 
 	applyFilter(event: Event) {

@@ -34,15 +34,25 @@ export class ProductService {
 			.pipe(retry(3), catchError(this.handleError));
 	}
 
-	public AddProductSer(product: Iproduct): Observable<any> {
-		return this.http
-			.post<any>(this.url, {
-				product_name: product.product_name,
-				product_description: product.product_description,
-				product_price: product.product_price,
-				categories: product.categories,
-				Prouduct_image: product.Prouduct_image,
-			})
-			.pipe(retry(3), catchError(this.handleError));
+  public AddProductSer(product: Iproduct): Observable<any> {
+    let Newbody = JSON.stringify(product);
+
+		return (
+			this.http
+				.post<any>(this.url, Newbody, {
+					headers: {
+						"Content-Type": "application/json",
+					},
+				})
+				//{
+				// product_name: product.product_name,
+				// product_description: product.product_description,
+				// product_price: product.product_price,
+				// categories: product.categories,
+				// Prouduct_image: product.Prouduct_image,
+				//}
+
+				.pipe(retry(3), catchError(this.handleError))
+		);
 	}
 }
