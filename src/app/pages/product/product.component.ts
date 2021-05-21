@@ -16,6 +16,7 @@ export interface Producttable {
 	image: string;
 }
 
+
 // let Product_DATA: Producttable[];
 
 // const Product_DATA: Producttable[] = [
@@ -62,9 +63,9 @@ export class ProductComponent implements OnInit {
 		"category",
 		"image",
 	];
-	dataSource = new MatTableDataSource(this.product);
+	dataSource = new MatTableDataSource();
 
-	applyFilter(event: Event) {
+applyFilter(event: Event) {
 		const filterValue = (event.target as HTMLInputElement).value;
 		this.dataSource.filter = filterValue.trim().toLowerCase();
 	}
@@ -72,15 +73,14 @@ export class ProductComponent implements OnInit {
 	category: ICategory[] = [
 		{ value: "Electronics", viewValue: "Electronics" },
 		{ value: "Food", viewValue: "Food" },
-		{ value: "tacos-2", viewValue: "Tacos" },
-		{ value: "tacos-3", viewValue: "Tacos" },
-		{ value: "tacos-4", viewValue: "Tacos" },
-		{ value: "tacos-5", viewValue: "Tacos" },
-		{ value: "tacos-6", viewValue: "Tacos" },
-		{ value: "tacos-7", viewValue: "Tacos" },
-		{ value: "tacos-8", viewValue: "Tacos" },
-		{ value: "tacos-9", viewValue: "Tacos" },
-		{ value: "tacos-10", viewValue: "Tacos" },
+		{ value: "Grocery", viewValue: "Grocery" },
+		{ value: "Ingredients", viewValue: "Ingredients" },
+		{ value: "Medical", viewValue: "Medical" },
+		{ value: "Personnel Care", viewValue: "Personnel Care" },
+		{ value: "Gifts and Parcels", viewValue: "Gifts and Parcels" },
+		{ value: "Pick-ups", viewValue: "Pick-ups" },
+		{ value: "Others", viewValue: "Others" },
+
 	];
 
 	uploadFile(event) {
@@ -92,9 +92,9 @@ export class ProductComponent implements OnInit {
 	}
 
 	addProduct() {
-		if (this.productForm.invalid) {
-			return;
-		}
+		// if (this.productForm.invalid) {
+		// 	return;
+		// }
 		console.log(this.productForm.value);
 		this.productData.AddProductSer(this.productForm.value).subscribe(
 			(response) => console.log(response),

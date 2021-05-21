@@ -23,7 +23,9 @@
 				<mat-label>Filter</mat-label>
 				<input
 					matInput
-					(keyup)="applyFilter($event)"
+          type="text"
+          [(ngmodel)] = "filtervalue"
+					(input)="applyFilter(filtervalue)"
 					placeholder="Ex. ium"
 					#input
 				/>
