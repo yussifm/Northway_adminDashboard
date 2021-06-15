@@ -1,10 +1,9 @@
-import { Iproduct } from './../product.interface';
+import { Iproduct } from "./../product.interface";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
-import { catchError, retry } from 'rxjs/operators';
-
-
+import { catchError, retry } from "rxjs/operators";
+import { JWT_token } from "src/app/Auth/auth.service";
 
 @Injectable({
 	providedIn: "root",
@@ -34,25 +33,29 @@ export class ProductService {
 			.pipe(retry(3), catchError(this.handleError));
 	}
 
-  public AddProductSer(product: Iproduct): Observable<any> {
-    let Newbody = JSON.stringify(product);
+	public AddProductSer(product: Iproduct): Observable<any> {
+		const token = localStorage.getItem(JWT_token);
+		// let Newcate = JSON.stringify(product.categories.value);
+		const category = product.categories;
 
-		return (
-			this.http
-				.post<any>(this.url, Newbody, {
+		return this.http
+			.post<any>(
+				this.url,
+				{
+					product_name: product.product_name,
+					product_description: product.product_description,
+					product_price: product.product_price,
+					categories: [`${category}`],
+					Prouduct_image: product.product_image,
+				},
+				{
 					headers: {
 						"Content-Type": "application/json",
+						Authorization: "Bearer " + token,
 					},
-				})
-				//{
-				// product_name: product.product_name,
-				// product_description: product.product_description,
-				// product_price: product.product_price,
-				// categories: product.categories,
-				// Prouduct_image: product.Prouduct_image,
-				//}
+				},
+			)
 
-				.pipe(retry(3), catchError(this.handleError))
-		);
+			.pipe(retry(3), catchError(this.handleError));
 	}
 }

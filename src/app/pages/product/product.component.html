@@ -18,14 +18,11 @@
 <Main>
 	<ng-container *ngIf="proView; else elseTemplate">
 		<div class="productView">
-
 			<mat-form-field>
 				<mat-label>Filter</mat-label>
 				<input
 					matInput
-          type="text"
-          [(ngmodel)] = "filtervalue"
-					(input)="applyFilter(filtervalue)"
+					(keyup)="applyFilter($event)"
 					placeholder="Ex. ium"
 					#input
 				/>
@@ -41,40 +38,49 @@
 				<!-- Name Column -->
 				<ng-container matColumnDef="name">
 					<th mat-header-cell *matHeaderCellDef> Name </th>
-					<td mat-cell *matCellDef="let element"> {{ element.product_name }} </td>
+					<td mat-cell *matCellDef="let element">
+						{{ element.product_name }}
+					</td>
 				</ng-container>
 
 				<!-- Weight Column -->
 				<ng-container matColumnDef="description">
 					<th mat-header-cell *matHeaderCellDef> Decription </th>
-					<td mat-cell *matCellDef="let element"> {{ element.product_description }} </td>
+					<td mat-cell *matCellDef="let element">
+						{{ element.product_description }}
+					</td>
 				</ng-container>
 
 				<!-- Symbol Column -->
 				<ng-container matColumnDef="price">
 					<th mat-header-cell *matHeaderCellDef> price </th>
-					<td mat-cell *matCellDef="let element"> {{ element.product_price }} </td>
+					<td mat-cell *matCellDef="let element">
+						{{ element.product_price }}
+					</td>
 				</ng-container>
 
-        <!-- category -->
+				<!-- category -->
 
 				<ng-container matColumnDef="category">
 					<th mat-header-cell *matHeaderCellDef> category </th>
-					<td mat-cell *matCellDef="let element"> {{ element.categories[0].category_name }} </td>
+					<td mat-cell *matCellDef="let element">
+						{{ element.categories[0].category_name }}
+					</td>
 				</ng-container>
 
-
-        <!-- category -->
+				<!-- category -->
 
 				<ng-container matColumnDef="image">
 					<th mat-header-cell *matHeaderCellDef> image </th>
 					<td mat-cell *matCellDef="let element">
-            <img [src]="element.product_image" [alt]="element.product_name" style="width: 50px; height: 50px; object-fit: cover;">
-            <!-- <img src="http://localhost:3000/user/userimage/TFNY21226957932d-f419-4a9d-84e1-ffbaf1f9c375.JPG" alt="" > -->
-           </td>
+						<img
+							[src]="element.product_image"
+							[alt]="element.product_name"
+							style="width: 50px; height: 50px; object-fit: cover"
+						/>
+						<!-- <img src="http://localhost:3000/user/userimage/TFNY21226957932d-f419-4a9d-84e1-ffbaf1f9c375.JPG" alt="" > -->
+					</td>
 				</ng-container>
-
-
 
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 				<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
@@ -160,7 +166,8 @@
 
 			<mat-form-field appearance="fill">
 				<mat-label>Product Category</mat-label>
-				<mat-select>
+
+				<mat-select formControlName="categories">
 					<mat-option *ngFor="let cate of category" [value]="cate.value">
 						{{ cate.viewValue }}
 					</mat-option>
