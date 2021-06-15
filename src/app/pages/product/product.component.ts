@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { map, tap } from "rxjs/operators";
 import { MatTableDataSource } from "@angular/material/table";
+import { promise } from "protractor";
 
 //Tables
 export interface Producttable {
@@ -63,11 +64,17 @@ export class ProductComponent implements OnInit {
 		"category",
 		"image",
 	];
-	dataSource = new MatTableDataSource();
 
-applyFilter(event: Event) {
+	// async applyFilter(event: Event): Promise<any> {
+	//   const filterValue = (event.target as HTMLInputElement).value;
+	//   return await this.product.filter((items) => items.product_name == filterValue);
+
+	// }
+	dataSource = new MatTableDataSource(this.product);
+
+	applyFilter(event: Event) {
 		const filterValue = (event.target as HTMLInputElement).value;
-		this.dataSource.filter = filterValue.trim().toLowerCase();
+				this.dataSource.filter = filterValue.trim().toLowerCase();
 	}
 
 	category: ICategory[] = [
@@ -80,7 +87,6 @@ applyFilter(event: Event) {
 		{ value: "Gifts and Parcels", viewValue: "Gifts and Parcels" },
 		{ value: "Pick-ups", viewValue: "Pick-ups" },
 		{ value: "Others", viewValue: "Others" },
-
 	];
 
 	uploadFile(event) {
